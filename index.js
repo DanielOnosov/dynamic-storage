@@ -1,3 +1,4 @@
 import DynamicStorage from "./lib/storage/index.js";
 
-export default DynamicStorage
+const storage = new DynamicStorage()
+export default storage

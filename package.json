@@ -1,16 +1,19 @@
 {
   "name": "dynamic-storage",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.1.2",
+  "description": "dynamic-storage is a wrapper around localStorage that simplifies manipulations, such as dynamic state updates, JSON parsing and working with objects.",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": ["Local Storage", "Dynamic Storage", "Dynamic State"],
   "author": "Daniel Onosov",
   "license": "ISC",
   "devDependencies": {
     "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "esm": "^3.2.25"
   }
 }
