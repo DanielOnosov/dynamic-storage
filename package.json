@@ -1,7 +1,7 @@
 {
   "name": "dynamic-storage",
   "version": "1.1.2",
-  "description": "dynamic-storage is a wrapper around localStorage that simplifies manipulations, such as dynamic state updates, JSON parsing and working with objects.",
+  "description": "dynamic-storage is a wrapper around localStorage that simplifies manipulations, such as state update, dynamic state, JSON, parsing and working with objects/arrays.",
   "main": "index.js",
   "type": "module",
   "scripts": {

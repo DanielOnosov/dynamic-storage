@@ -5,8 +5,8 @@
 
 [//]: # ([![Build Status]&#40;https://travis-ci.org/your-username/your-repo.svg?branch=master&#41;]&#40;https://travis-ci.org/DaksinWorld/dynamic-storage&#41;)
 
-dynamic-storage is a wrapper around localStorage that simplifies manipulations, such as dynamic state updates, JSON
-parsing and working with objects.
+dynamic-storage is a wrapper around localStorage that simplifies manipulations, such as state update, dynamic state, JSON
+parsing and working with objects/arrays.
 
 ## Installation
 
@@ -26,33 +26,35 @@ const storage = DynamicStorage.init()
 
 ## Examples
 
-### Example 1: Dynamic State Updating
+### Example 1: Dynamic State
 
 #### Description
 
-This example demonstrates best practices for achieving dynamic state updating.
+This example demonstrates best practices for achieving dynamic state while updating.
 
 #### Code
 
 ```html
 <script type="module">
-import DynamicStorage from 'dynamic-storage';        
+  import DynamicStorage from 'dynamic-storage';
 
-const storage = DynamicStorage.init()
+  const storage = DynamicStorage.init()
 
-// ❌ Not dynamic
-let access_token = storage.access_token;
-console.log(access_token);
+  // ❌ Not dynamic
+  // The local storage will still be updated, but the variable 'access_token' won't change.
+  let access_token = storage.access_token;
+  console.log(access_token);
 
-access_token = "new value";
-console.log(access_token); // won't be updated
+  access_token = "new value";
+  console.log(access_token); // Only the value in local storage was changed; the variable 'access_token' remained the same
 
-// ✅ Instead use this:
-let access_token = () => storage.access_token;
-console.log(access_token()); // log: "initial value"
+  // ✅ Instead use this:
+  // The function will check for the value in local storage each time it is called.
+  let access_token = () => storage.access_token;
+  console.log(access_token()); // log: "initial value"
 
-access_token = "new value";
-console.log(access_token()); // log: "new value"
+  access_token = "new value";
+  console.log(access_token()); // log: "new value"
 
 </script>
 ```
@@ -67,25 +69,25 @@ This example demonstrates how to work with objects using the library, following 
 
 ```html
 <script type="module">
-import DynamicStorage from 'dynamic-storage';        
+  import DynamicStorage from 'dynamic-storage';
 
-const storage = DynamicStorage.init()
+  const storage = DynamicStorage.init()
 
-// ❌ Won't work if 'data' is empty
-storage.data.user.name = "Ben";
+  // ❌ Won't work if 'data' is empty
+  storage.data.user.name = "Ben";
 
-// ✅ Use this if 'data' is empty
-storage.data = {user: {name: "Ben"}}
+  // ✅ Use this if 'data' is empty
+  storage.data = {user: {name: "Ben"}}
 
-console.log(storage.data.user.name) // log: "Ben"
-storage.data.user.name = "Alex";
+  console.log(storage.data.user.name) // log: "Ben"
+  storage.data.user.name = "Alex";
 
-// Same logic with arrays
-storage.values = [1,2,3,4,5]
-console.log(storage.values[0]) // log: 1
+  // Same logic with arrays
+  storage.values = [1,2,3,4,5]
+  console.log(storage.values[0]) // log: 1
 
-storage.values[0] = 6
-console.log(storage.values[0]) // log: 6
+  storage.values[0] = 6
+  console.log(storage.values[0]) // log: 6
 </script>
 ```
 
@@ -99,13 +101,13 @@ This example shows how to remove a single item from localStorage or completely c
 
 ```html
 <script type="module">
-    import DynamicStorage from 'dynamic-storage';
+  import DynamicStorage from 'dynamic-storage';
 
-    const storage = DynamicStorage.init()
+  const storage = DynamicStorage.init()
 
-    storage.access_token = undefined // Because value is undefined, it will be removed from localStorage
+  storage.access_token = undefined // Because value is undefined, it will be removed from localStorage
 
-    DynamicStorage.clear() // Clears localStorage  
+  DynamicStorage.clear() // Clears localStorage  
 </script>
 ```
 

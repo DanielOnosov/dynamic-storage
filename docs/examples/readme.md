@@ -1,10 +1,10 @@
 ## Examples
 
-### Example 1: Dynamic State Updating
+### Example 1: Dynamic State
 
 #### Description
 
-This example demonstrates best practices for achieving dynamic state updating.
+This example demonstrates best practices for achieving dynamic state while updating.
 
 #### Code
 
@@ -15,11 +15,12 @@ import DynamicStorage from 'dynamic-storage';
 const storage = DynamicStorage.init()
 
 // ❌ Not dynamic
+// local storage still will be updated, but variable value won't change
 let access_token = storage.access_token;
 console.log(access_token);
 
 access_token = "new value";
-console.log(access_token); // won't be updated
+console.log(access_token); // only local storage value changed, value left the same
 
 // ✅ Instead use this:
 let access_token = () => storage.access_token;
